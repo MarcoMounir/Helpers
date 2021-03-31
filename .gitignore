@@ -1,0 +1,6 @@
+
+*.cache
+SqlDataReaderMapper/obj/Debug/SqlDataReaderMapper.csproj.FileListAbsolute.txt
+SqlDataReaderMapper/obj/Release/SqlDataReaderMapper.csproj.FileListAbsolute.txt
+Tests/obj/Debug/Tests.csproj.FileListAbsolute.txt
+Tests/obj/Release/Tests.csproj.FileListAbsolute.txt
