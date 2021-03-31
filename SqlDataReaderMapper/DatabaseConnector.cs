@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace SqlDataReaderMapper
 {
@@ -14,7 +15,7 @@ namespace SqlDataReaderMapper
             _connectionString = connectionString;
             _commandTimeout = commandTimeout;
         }
-        public List<TReturnType> ReadDataFromStoredProcedure<TReturnType>(string storedProcedureName, List<SqlParameter> sqlParameters = null) where TReturnType : class, new()
+        public IEnumerable<TReturnType> ReadDataFromStoredProcedure<TReturnType>(string storedProcedureName, IEnumerable<SqlParameter> sqlParameters = null) where TReturnType : class, new()
         {
             List<TReturnType> result = new List<TReturnType>();
             using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
@@ -24,7 +25,7 @@ namespace SqlDataReaderMapper
                 {
                     sqlCommand.CommandTimeout = _commandTimeout;
                     sqlCommand.CommandType = CommandType.StoredProcedure;
-                    if(sqlParameters != null && sqlParameters.Count != 0)
+                    if(sqlParameters != null)
                         sqlCommand.Parameters.AddRange(sqlParameters.ToArray());
                     using (SqlDataReader reader = sqlCommand.ExecuteReader())
                     {
@@ -39,7 +40,7 @@ namespace SqlDataReaderMapper
             }
             return result;
         }
-        public List<TReturnType> ReadDataFromStoredProcedure<TReturnType>(string storedProcedureName, Func<SqlDataReader, TReturnType> mapDataAction, List<SqlParameter> sqlParameters = null) where TReturnType : class, new()
+        public IEnumerable<TReturnType> ReadDataFromStoredProcedure<TReturnType>(string storedProcedureName, Func<SqlDataReader, TReturnType> mapDataAction, IEnumerable<SqlParameter> sqlParameters = null) where TReturnType : class, new()
         {
             List<TReturnType> result = new List<TReturnType>();
             using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
@@ -49,7 +50,7 @@ namespace SqlDataReaderMapper
                 {
                     sqlCommand.CommandTimeout = _commandTimeout;
                     sqlCommand.CommandType = CommandType.StoredProcedure;
-                    if (sqlParameters != null && sqlParameters.Count != 0)
+                    if (sqlParameters != null)
                         sqlCommand.Parameters.AddRange(sqlParameters.ToArray());
                     using (SqlDataReader reader = sqlCommand.ExecuteReader())
                     {
@@ -63,7 +64,7 @@ namespace SqlDataReaderMapper
             }
             return result;
         }
-        public List<TReturnType> ReadDataFromSqlCommand<TReturnType>(string commandText, List<SqlParameter> sqlParameters = null) where TReturnType : new()
+        public IEnumerable<TReturnType> ReadDataFromSqlCommand<TReturnType>(string commandText, IEnumerable<SqlParameter> sqlParameters = null) where TReturnType : new()
         {
             List<TReturnType> result = new List<TReturnType>();
             using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
@@ -72,7 +73,7 @@ namespace SqlDataReaderMapper
                 using (SqlCommand sqlCommand = new SqlCommand(commandText, sqlConnection))
                 {
                     sqlCommand.CommandTimeout = _commandTimeout;
-                    if (sqlParameters != null && sqlParameters.Count != 0)
+                    if (sqlParameters != null)
                         sqlCommand.Parameters.AddRange(sqlParameters.ToArray());
                     using (SqlDataReader reader = sqlCommand.ExecuteReader())
                     {
@@ -87,7 +88,7 @@ namespace SqlDataReaderMapper
             }
             return result;
         }
-        public List<TReturnType> ReadDataFromSqlCommand<TReturnType>(string commandText, Func<SqlDataReader, TReturnType> mapDataAction, List<SqlParameter> sqlParameters=null) where TReturnType : class, new()
+        public IEnumerable<TReturnType> ReadDataFromSqlCommand<TReturnType>(string commandText, Func<SqlDataReader, TReturnType> mapDataAction, IEnumerable<SqlParameter> sqlParameters=null) where TReturnType : class, new()
         {
             List<TReturnType> result = new List<TReturnType>();
             using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
@@ -96,7 +97,7 @@ namespace SqlDataReaderMapper
                 using (SqlCommand sqlCommand = new SqlCommand(commandText, sqlConnection))
                 {
                     sqlCommand.CommandTimeout = _commandTimeout;
-                    if (sqlParameters != null && sqlParameters.Count != 0)
+                    if (sqlParameters != null)
                         sqlCommand.Parameters.AddRange(sqlParameters.ToArray());
                     using (SqlDataReader reader = sqlCommand.ExecuteReader())
                     {

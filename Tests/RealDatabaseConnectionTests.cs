@@ -22,17 +22,17 @@ namespace Tests
         {
             DatabaseConnector connector = new DatabaseConnector(_connectionString);
             List<SqlParameter> sqlParameter = new List<SqlParameter>() {new SqlParameter() {ParameterName = "@Id", Value = 0}};
-            List<TestTable> testTables = connector.ReadDataFromStoredProcedure<TestTable>("sp_TestTableStoredProc", sqlParameter);
+            IEnumerable<TestTable> testTables = connector.ReadDataFromStoredProcedure<TestTable>("sp_TestTableStoredProc", sqlParameter);
             Assert.IsNotNull(testTables);
-            Assert.AreNotEqual(testTables.Count, 0);
+            Assert.AreNotEqual(testTables.Count(), 0);
         }
         [TestMethod]
         public void ReadDataFromTable_Success()
         {
             DatabaseConnector connector = new DatabaseConnector(_connectionString);
-            List<TestTable> testTables = connector.ReadDataFromSqlCommand<TestTable>("Select * from TestTable");
+            IEnumerable<TestTable> testTables = connector.ReadDataFromSqlCommand<TestTable>("Select * from TestTable");
             Assert.IsNotNull(testTables);
-            Assert.AreNotEqual(testTables.Count, 0);
+            Assert.AreNotEqual(testTables.Count(), 0);
         }
         [TestMethod]
         public void ReadCountFromTable_Success()
