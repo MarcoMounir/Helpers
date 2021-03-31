@@ -7,8 +7,8 @@ namespace SqlDataReaderMapper
 {
     public class DatabaseConnector
     {
-        private readonly string _connectionString;
-        private readonly int _commandTimeout;
+        private string _connectionString;
+        private int _commandTimeout;
         public DatabaseConnector(string connectionString, int commandTimeout = 30)
         {
             _connectionString = connectionString;

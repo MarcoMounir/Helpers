@@ -9,7 +9,7 @@ namespace SqlDataReaderMapper
 {
     public class SqlDataReaderMapper<TObject> where TObject : new()
     {
-        private readonly IDataReader _dataReader;
+        private IDataReader _dataReader;
 
         public SqlDataReaderMapper(IDataReader dataReader)
         {
