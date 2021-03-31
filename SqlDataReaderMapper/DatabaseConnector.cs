@@ -16,11 +16,11 @@ namespace SqlDataReaderMapper
             _commandTimeout = commandTimeout;
         }
 
-        public IEnumerable<TReturnType> ReadDataFromStoredProcedure<TReturnType>(string storedProcedureName, IEnumerable<SqlParameter> sqlParameters = null) where TReturnType : class, new()
+        public IEnumerable<TReturnType> ReadDataFromStoredProcedure<TReturnType>(string storedProcedureName, IEnumerable<SqlParameter> sqlParameters = null) where TReturnType :new()
         {
             return Execute<TReturnType>(CommandType.StoredProcedure, storedProcedureName, sqlParameters);
         }
-        public IEnumerable<TReturnType> ReadDataFromStoredProcedure<TReturnType>(string storedProcedureName, Func<SqlDataReader, TReturnType> mapDataAction, IEnumerable<SqlParameter> sqlParameters = null) where TReturnType : class, new()
+        public IEnumerable<TReturnType> ReadDataFromStoredProcedure<TReturnType>(string storedProcedureName, Func<SqlDataReader, TReturnType> mapDataAction, IEnumerable<SqlParameter> sqlParameters = null) where TReturnType :new()
         {
             return Execute<TReturnType>(CommandType.StoredProcedure, storedProcedureName, sqlParameters, mapDataAction);
         }
@@ -28,7 +28,7 @@ namespace SqlDataReaderMapper
         {
             return Execute<TReturnType>(CommandType.Text, commandText, sqlParameters);
         }
-        public IEnumerable<TReturnType> ReadDataFromSqlCommand<TReturnType>(string commandText, Func<SqlDataReader, TReturnType> mapDataAction, IEnumerable<SqlParameter> sqlParameters=null) where TReturnType : class, new()
+        public IEnumerable<TReturnType> ReadDataFromSqlCommand<TReturnType>(string commandText, Func<SqlDataReader, TReturnType> mapDataAction, IEnumerable<SqlParameter> sqlParameters=null) where TReturnType : new()
         {
             return Execute<TReturnType>(CommandType.Text, commandText, sqlParameters, mapDataAction);
         }
