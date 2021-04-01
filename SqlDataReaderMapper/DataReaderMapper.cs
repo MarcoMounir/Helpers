@@ -7,11 +7,11 @@ using SqlDataReaderMapper.Attributes;
 
 namespace SqlDataReaderMapper
 {
-    public class SqlDataReaderMapper<TObject> where TObject : new()
+    public class DataReaderMapper<TObject> where TObject : new()
     {
         private IDataReader _dataReader;
 
-        public SqlDataReaderMapper(IDataReader dataReader)
+        public DataReaderMapper(IDataReader dataReader)
         {
             _dataReader = dataReader;
         }

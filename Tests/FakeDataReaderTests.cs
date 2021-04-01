@@ -38,7 +38,7 @@ namespace Tests
         {
             TestTable testTable = CreateTestTableObject();
             IDataReader reader = MockDataReader(testTable);
-            TestTable t = new SqlDataReaderMapper<TestTable>(reader).Map();
+            TestTable t = new DataReaderMapper<TestTable>(reader).Map();
             Assert.AreEqual(t.Id, testTable.Id);
             Assert.AreEqual(t.CharCol, testTable.CharCol);
             Assert.AreEqual(t.DateTimeCol, testTable.DateTimeCol);
