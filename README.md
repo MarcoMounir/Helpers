@@ -1,5 +1,5 @@
 # SqlDataReaderMapper
-Library that helps to Convert from SqlDataReader Type to your desired object type
+Library that helps to Convert from IDataReader Type to your desired object type
 
 
 # Prerequisites
