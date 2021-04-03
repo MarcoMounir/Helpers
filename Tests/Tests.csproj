@@ -71,10 +71,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SqlDataReaderMapper\SqlDataReaderMapper.csproj">
+    <ProjectReference Include="..\Helpers.DataReaderMapper\Helpers.DataReaderMapper.csproj">
       <Project>{72841a3d-4fc0-4183-90f4-7a55c08a8206}</Project>
-      <Name>SqlDataReaderMapper</Name>
+      <Name>Helpers.DataReaderMapper</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="DatabaseScript\DatabaseInitScript.sql" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

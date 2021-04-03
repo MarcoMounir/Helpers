@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>Helpers.DataReaderMapper</id>
+    <version>1.0.0</version>
+    <title>DataReader Mapper</title>
+    <authors>Marco Mounir</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/MarcoMounir/SqlDataReaderMapper</projectUrl>
+    <description>Library that helps to Convert from IDataReader Type to your desired object type.</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2021</copyright>
+    <tags>.net c#</tags>
+  </metadata>
+</package>

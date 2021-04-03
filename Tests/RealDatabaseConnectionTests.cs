@@ -1,10 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
-using SqlDataReaderMapper;
+using com.helpers.DataReaderMapper;
 
 namespace Tests
 {

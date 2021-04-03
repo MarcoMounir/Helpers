@@ -2,8 +2,8 @@
 *.cache
 /Tests/bin
 /Tests/obj
-/SqlDataReaderMapper/bin
-/SqlDataReaderMapper/obj
+/Helpers.DataReaderMapper/bin
+/Helpers.DataReaderMapper/obj
 /packages
 /.vs
 *.user

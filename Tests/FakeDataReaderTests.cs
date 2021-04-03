@@ -1,11 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
+using com.helpers.DataReaderMapper;
 using NSubstitute;
-using NSubstitute.Routing.Handlers;
-using SqlDataReaderMapper;
 
 namespace Tests
 {
