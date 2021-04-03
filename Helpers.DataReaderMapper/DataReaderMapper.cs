@@ -24,7 +24,7 @@ namespace com.helpers.DataReaderMapper
         }
         public TObject Map()
         {
-            TObject returnObject = default;
+            TObject returnObject = default(TObject);
             Type objectType = Nullable.GetUnderlyingType(typeof(TObject)) ?? typeof(TObject);
             if (objectType.IsPrimitive || objectType.IsGenericType || objectType.IsEnum)
                 return MapNonClassType(returnObject, objectType);
