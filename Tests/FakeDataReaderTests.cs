@@ -1,7 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
 using com.helpers.DataReaderMapper;
+using com.helpers.DataReaderMapper.Mappers;
 using NSubstitute;
 
 namespace Tests
@@ -34,8 +37,7 @@ namespace Tests
         public void FakeDataReader_Success()
         {
             TestTable testTable = CreateTestTableObject();
-            IDataReader reader = MockDataReader(testTable);
-            TestTable t = new DataReaderMapper<TestTable>(reader).Map();
+            var t = BaseMapper<TestTable>.GetMapper(MockDataReader(testTable)).Map();
             Assert.AreEqual(t.Id, testTable.Id);
             Assert.AreEqual(t.CharCol, testTable.CharCol);
             Assert.AreEqual(t.DateTimeCol, testTable.DateTimeCol);

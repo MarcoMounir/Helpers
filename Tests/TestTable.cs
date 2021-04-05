@@ -39,6 +39,7 @@ namespace Tests
         public bool BooleanCol { get; set; }
         [Column("NullableBooleanColumn")]
         public bool? NullableBooleanCol { get; set; }
+
     }
 
     public enum TestEnum

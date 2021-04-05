@@ -10,7 +10,7 @@ using com.helpers.DataReaderMapper.Attributes;
 
 namespace com.helpers.DataReaderMapper.Mappers
 {
-    internal abstract class BaseMapper<TObject> where TObject : new()
+    public abstract class BaseMapper<TObject> where TObject : new()
     {
         protected IDataReader DataReader;
         protected BaseMapper(IDataReader dataReader)

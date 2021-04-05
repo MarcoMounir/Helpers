@@ -1,6 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using com.helpers.DataReaderMapper;
@@ -61,7 +63,7 @@ namespace Tests
         {
             DatabaseConnector connector = new DatabaseConnector(_sqlConnection);
             int? value = connector.ReadDataFromSqlCommand<int?>("Select NULL from TestTable").FirstOrDefault();
-            Assert.AreEqual(value, null);
+            Assert.AreEqual(value, null);   
         }
     }
 }
