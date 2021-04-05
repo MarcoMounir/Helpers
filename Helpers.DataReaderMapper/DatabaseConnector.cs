@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
+using com.helpers.DataReaderMapper.Mappers;
 
 namespace com.helpers.DataReaderMapper
 {
@@ -33,7 +35,6 @@ namespace com.helpers.DataReaderMapper
         }
         private IEnumerable<TReturnType> Execute<TReturnType>(CommandType commandType, string commandText, IEnumerable<IDbDataParameter> sqlParameters = null, Func<IDataReader, TReturnType> mapDataAction = null) where TReturnType : new()
         {
-            List<TReturnType> result = new List<TReturnType>();
             InitConnection();
             using (IDbCommand sqlCommand = GetCommandInstanceAccordingToDatabaseType(commandText))
             {
@@ -44,21 +45,35 @@ namespace com.helpers.DataReaderMapper
                         sqlCommand.Parameters.Add(dbDataParameter);
                 using (IDataReader reader = sqlCommand.ExecuteReader())
                 {
-                    DataReaderMapper<TReturnType> mapper = new DataReaderMapper<TReturnType>(reader);
-                    while (reader.Read())
-                    {
-                        TReturnType returnObject = mapDataAction == null ? mapper.Map() : mapDataAction(reader);
-                        result.Add(returnObject);
-                    }
+                    return mapDataAction != null ? Map<TReturnType>(reader, mapDataAction) : Map<TReturnType>(reader);
                 }
             }
-
-            return result;
         }
 
+        private List<TReturnType> Map<TReturnType>(IDataReader dataReader, Func<IDataReader, TReturnType> mapDataAction)
+        {
+            List<TReturnType> result = new List<TReturnType>();
+            while (dataReader.Read())
+            {
+                TReturnType returnObject = mapDataAction(dataReader);
+                result.Add(returnObject);
+            }
+            return result;
+        }
+        private List<TReturnType> Map<TReturnType>(IDataReader dataReader) where TReturnType : new()
+        {
+            List<TReturnType> result = new List<TReturnType>();
+            BaseMapper<TReturnType> mapper = BaseMapper<TReturnType>.GetMapper(dataReader);
+            while (dataReader.Read())
+            {
+                TReturnType returnObject = mapper.Map();
+                result.Add(returnObject);
+            }
+            return result;
+        }
         private void InitConnection()
         {
-            if (_dbConnection.State != ConnectionState.Open || _dbConnection.State != ConnectionState.Connecting)
+            if (_dbConnection.State == ConnectionState.Closed)
                 _dbConnection.Open();
         }
 
