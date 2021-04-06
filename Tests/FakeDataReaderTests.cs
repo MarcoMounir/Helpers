@@ -37,23 +37,23 @@ namespace Tests
         public void FakeDataReader_Success()
         {
             TestTable testTable = CreateTestTableObject();
-            var t = BaseMapper<TestTable>.GetMapper(MockDataReader(testTable)).Map();
-            Assert.AreEqual(t.Id, testTable.Id);
-            Assert.AreEqual(t.CharCol, testTable.CharCol);
-            Assert.AreEqual(t.DateTimeCol, testTable.DateTimeCol);
-            Assert.AreEqual(t.DecimalCol, testTable.DecimalCol);
-            Assert.AreEqual(t.EnumCol, testTable.EnumCol);
-            Assert.AreEqual(t.IntCol, testTable.IntCol);
-            Assert.AreEqual(t.MoneyCol, testTable.MoneyCol);
-            Assert.AreEqual(t.NullableIntCol, testTable.NullableIntCol);
-            Assert.AreEqual(t.NullableCol, testTable.NullableCol);
-            Assert.AreEqual(t.NullableDateTimeCol, testTable.NullableDateTimeCol);
-            Assert.AreEqual(t.NullableDecimalCol, testTable.NullableDecimalCol);
-            Assert.AreEqual(t.NullableEnumCol, testTable.NullableEnumCol);
-            Assert.AreEqual(t.StrCol, testTable.StrCol);
-            Assert.AreEqual(t.StrCol2, testTable.StrCol2);
-            Assert.AreEqual(t.BooleanCol, testTable.BooleanCol);
-            Assert.AreEqual(t.NullableBooleanCol, testTable.NullableBooleanCol);
+            var expectedReturn = BaseMapper<TestTable>.GetMapper(MockDataReader(testTable)).Map();
+            Assert.AreEqual(expectedReturn.Id, testTable.Id);
+            Assert.AreEqual(expectedReturn.CharCol, testTable.CharCol);
+            Assert.AreEqual(expectedReturn.DateTimeCol, testTable.DateTimeCol);
+            Assert.AreEqual(expectedReturn.DecimalCol, testTable.DecimalCol);
+            Assert.AreEqual(expectedReturn.EnumCol, testTable.EnumCol);
+            Assert.AreEqual(expectedReturn.IntCol, testTable.IntCol);
+            Assert.AreEqual(expectedReturn.MoneyCol, testTable.MoneyCol);
+            Assert.AreEqual(expectedReturn.NullableIntCol, testTable.NullableIntCol);
+            Assert.AreEqual(expectedReturn.NullableCol, testTable.NullableCol);
+            Assert.AreEqual(expectedReturn.NullableDateTimeCol, testTable.NullableDateTimeCol);
+            Assert.AreEqual(expectedReturn.NullableDecimalCol, testTable.NullableDecimalCol);
+            Assert.AreEqual(expectedReturn.NullableEnumCol, testTable.NullableEnumCol);
+            Assert.AreEqual(expectedReturn.StrCol, testTable.StrCol);
+            Assert.AreEqual(expectedReturn.StrCol2, testTable.StrCol2);
+            Assert.AreEqual(expectedReturn.BooleanCol, testTable.BooleanCol);
+            Assert.AreEqual(expectedReturn.NullableBooleanCol, testTable.NullableBooleanCol);
         }
 
         private static IDataReader MockDataReader(TestTable testTable)
