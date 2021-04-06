@@ -7,3 +7,5 @@
 /packages
 /.vs
 *.user
+*.nupkg
+*.nuspec
