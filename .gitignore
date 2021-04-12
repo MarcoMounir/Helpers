@@ -9,3 +9,4 @@
 *.user
 *.nupkg
 *.nuspec
+/Helpers.DataReaderMapper/*.exe
